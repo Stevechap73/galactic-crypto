@@ -1,7 +1,5 @@
 "use client";
-import { AccueilCard } from "@/Components/Cards/Accueil/AccueilCard";
 import { CardContainer } from "@/Components/Cards/CardContainer";
-import { CardAllCrypto } from "@/Components/Cards/cardAllCrypto";
 import { CardCrypto } from "@/Components/Cards/cardCrypto";
 import { Footer } from "@/Components/Footer/footer";
 import { Header } from "@/Components/Header/header";
@@ -9,7 +7,7 @@ import { getAllCryptos } from "@/Services/crypto";
 import { CryptoAllProps } from "@/Utils/type";
 import React, { useEffect, useState } from "react";
 
-export default function Home() {
+export default function page() {
   const [cryptoList, setCryptosList] = useState<CryptoAllProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,8 +35,24 @@ export default function Home() {
     <div>
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1>Accueil</h1>
-        <AccueilCard />
+        {isLoading ? (
+          <p>Chargement...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : (
+          <CardContainer name={"Toutes les Cryptos"}>
+            {cryptoList.map((crypto: CryptoAllProps) => (
+              <CardCrypto
+                key={crypto.id}
+                name={crypto.name}
+                value={crypto.value}
+                image={crypto.image}
+                quantity={crypto.quantity}
+                created_at={crypto.created_at}
+              />
+            ))}
+          </CardContainer>
+        )}
       </main>
       <Footer />
     </div>
