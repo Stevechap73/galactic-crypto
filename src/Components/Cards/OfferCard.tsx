@@ -28,7 +28,7 @@ export const OfferCard = ({
       })
       .catch((e) => {
         if (e) {
-          toast.error("error");
+          toast.error("Plus d'argent");
           console.log(e);
         }
       });
@@ -36,19 +36,21 @@ export const OfferCard = ({
 
   return (
     <div>
-      <p>Nombre de jetons: {offer.amount}</p>
-      <p>Vendeur: {offer.User.pseudo}</p>
+      <div className="text-center">
+        <p>Nombre de jetons: {offer.amount}</p>
+        <p>Vendeur: {offer.User.pseudo}</p>
+      </div>
       <Cryptocard crypto={offer.Crypto} isBuyVisible={false} />
-      <div className="w-full flex justify-start">
+      <div className="w-full flex justify-center">
         <button
-          className="bg-white text-center rounded-lg text-indigo-600 w-20 p-1 text-sm mt-1"
+          className="bg-gray-200 text-center rounded-lg text-indigo-600 w-20 p-1 text-sm mt-1"
           onClick={() => {
             handleCryptoBuyViaOffer(offer.id);
           }}
         >
-          Buy
+          Achat
         </button>
-      </div>
+      </div>{" "}
     </div>
   );
 };

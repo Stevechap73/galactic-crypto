@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import React from "react";
+import toast from "react-hot-toast";
 
 export const Header = () => {
   const { push } = useRouter();
@@ -77,6 +78,18 @@ export const Header = () => {
                   ></path>
                 </svg>
               </button>
+              <button
+                type="button"
+                onClick={() => {
+                  toast.success("Vous êtes déconnecté");
+                  localStorage.removeItem("token");
+
+                  push("/login");
+                }}
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+                Déconnexion
+              </button>
             </div>
             <div
               className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
@@ -99,11 +112,11 @@ export const Header = () => {
                   <a
                     href="#"
                     onClick={() => {
-                      push("/admin");
+                      push("/user");
                     }}
                     className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
-                    Admin
+                    Crypto
                   </a>
                 </li>
                 {/* <li>

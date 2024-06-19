@@ -48,10 +48,10 @@ export default function page() {
         <button
           className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black  flex items-center justify-evenly h-8"
           onClick={() => {
-            push("/admin");
+            push("/crypto");
           }}
         >
-          Vers Admin
+          Achat Crypto
         </button>
         {isLoading ? (
           <DNA
@@ -67,10 +67,9 @@ export default function page() {
         ) : (
           <CardContainer>
             <div>
-              <p> ma carte crypto</p>
               <CardUserMyAssets userMyassets={userMyAssetsList} />
             </div>
-            <div className="w-full h-[200px ]   border-2 border-black">
+            <div className="w-full h-[200px ] border-2 border-black">
               {isReloadNeeded &&
                 userMyAssetsList.UserHasCrypto.map((element: any) => {
                   return (
@@ -81,7 +80,7 @@ export default function page() {
                       value={element.Crypto.value}
                       image={element.Crypto.image}
                       quantity={element.Crypto.quantity}
-                      created_at={""}
+                      created_at={element.Crypto.created_at}
                     />
                   );
                 })}

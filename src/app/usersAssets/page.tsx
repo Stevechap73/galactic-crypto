@@ -43,14 +43,14 @@ export default function page() {
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <button
-          className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black  flex items-center justify-evenly h-8"
+          className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black flex items-center justify-evenly h-8 mb-20"
           onClick={() => {
             push("/admin");
           }}
         >
-          Vers Admin
+          Admin
         </button>
-        <AddCryptoModal setIsReloadNeeded={setIsReloadNeeded} />
+        {/* <AddCryptoModal setIsReloadNeeded={setIsReloadNeeded} /> */}
         {isLoading ? (
           <DNA
             visible={true}

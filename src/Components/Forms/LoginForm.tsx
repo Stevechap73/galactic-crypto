@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ErrorMsg } from "../Error";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export const LoginForm = () => {
   const [error, setError] = useState("");
@@ -23,10 +24,13 @@ export const LoginForm = () => {
         if (typeof window !== "undefined") {
           window.localStorage.setItem("token", res.data.access_token);
           const role = res.data.user.Role.name;
+          toast.success("Connexion réussie");
           console.log(role);
           if (role !== "admin") {
+            toast.success("Vous ètes Utilisateur");
             push("/crypto");
           } else {
+            toast.success("Vous ètes Administrateur");
             push("/admin");
           }
         }
@@ -49,7 +53,7 @@ export const LoginForm = () => {
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Email address
+              Adresse email
             </label>
             <div className="mt-2">
               <input
@@ -76,7 +80,7 @@ export const LoginForm = () => {
                 htmlFor="password"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Password
+                Mot de passe
               </label>
             </div>
             <div className="mt-2">
@@ -105,7 +109,7 @@ export const LoginForm = () => {
             <input
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              value="Singn up"
+              value="Connexion"
             />
           </div>
         </form>

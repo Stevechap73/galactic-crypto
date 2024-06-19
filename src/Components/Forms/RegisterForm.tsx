@@ -6,6 +6,7 @@ import { ErrorMsg } from "../Error";
 import { schemaRegister } from "@/Validations/validationForm";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthRegisterProps } from "@/Utils/type";
+import toast from "react-hot-toast";
 
 export const RegisterForm = () => {
   const [error, setError] = useState("");
@@ -25,10 +26,11 @@ export const RegisterForm = () => {
   const onSubmit: SubmitHandler<AuthRegisterProps> = (data) => {
     if (data.password === data.confirmPassword) {
       addRegister(data).then((res) => {
+        toast.success("Inscription réussie");
         push("/login");
       });
     } else {
-      alert("Le mot de passe n'est pas indentique !!");
+      toast.error("Le mot de passe n'est pas indentique !!");
     }
   };
 

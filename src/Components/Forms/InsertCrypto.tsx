@@ -7,6 +7,7 @@ import { schemaInsertCrypto } from "@/Validations/validationForm";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CryptoCreateOrUpdateProps, CryptoProps } from "@/Utils/type";
 import { addCrypto } from "@/Services/crypto";
+import toast from "react-hot-toast";
 
 type InsertCryptoProps = {
   name: string;
@@ -40,13 +41,16 @@ export const InsertCryptoForm = ({
       .then((res) => {
         if (res.status === 201) {
           setIsReloadNeeded(false);
+          toast.success("Ajout Crypto réussie");
           handleClose();
           push("/admin");
         } else {
+          toast.error("Erreur lors de l'ajout de la crypto.");
           setError("Erreur lors de l'ajout de la crypto.");
         }
       })
       .catch((err) => {
+        toast.error("Il faut être Administrateur !!!");
         setError("Une erreur s'est produite. Veuillez réessayer.");
       });
   };

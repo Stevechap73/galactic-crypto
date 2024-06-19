@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { schemaInsertPromoCode } from "@/Validations/validationForm";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addPromoCode } from "@/Services/promoCode";
+import toast from "react-hot-toast";
 
 type InsertPromoCodeProps = {
   name: string;
@@ -36,13 +37,16 @@ export const InsertPromoCodeForm = ({
       .then((res) => {
         if (res.status === 201) {
           setIsReloadNeeded(false);
+          toast.success("Ajout PromoCode réussie");
           handleClose();
           push("/promoCode");
         } else {
+          toast.error("Erreur lors de l'ajout du PromoCode.");
           setError("Erreur lors de l'ajout du PromoCode.");
         }
       })
       .catch((err) => {
+        toast.error("Il faut être Utilisateur ou Administrateur !!!");
         setError("Une erreur s'est produite. Veuillez réessayer.");
       });
   };

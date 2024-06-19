@@ -1,12 +1,12 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-
 import { OfferCard } from "../../Components/Cards/OfferCard";
 import { OffersProps } from "@/Utils/type";
 import { getAllOffers } from "@/Services/offer";
 import { Header } from "@/Components/Header/header";
 import { Footer } from "@/Components/Footer/footer";
+import { Container } from "postcss";
+import { CardContainer } from "@/Components/Cards/CardContainer";
 
 const page = () => {
   const [offersList, setOffersList] = useState<OffersProps[]>();
@@ -27,21 +27,23 @@ const page = () => {
   return (
     <div>
       <Header />
-      <div className="border-2 border-gray-400 rounded-lg">
-        {offersList &&
-          offersList?.map((offer) => {
-            return (
-              <div
-                key={offer.id}
-                className="border-2 border-solid w-full rounded-md mt-1 p-2 "
-              >
-                <OfferCard
-                  offer={offer}
-                  setIsReloadNeeded={setIsReloadNeeded}
-                />
-              </div>
-            );
-          })}
+      <div className=" m-12">
+        <CardContainer>
+          {offersList &&
+            offersList?.map((offer) => {
+              return (
+                <div
+                  key={offer.id}
+                  className="border border-stone-950 rounded-3xl mt-1 p-2 m-3 bg-white"
+                >
+                  <OfferCard
+                    offer={offer}
+                    setIsReloadNeeded={setIsReloadNeeded}
+                  />
+                </div>
+              );
+            })}
+        </CardContainer>
       </div>
       <Footer />
     </div>

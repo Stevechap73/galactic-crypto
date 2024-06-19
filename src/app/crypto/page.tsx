@@ -8,6 +8,7 @@ import SearchCryptos from "@/Components/searchCrypto";
 
 import { getAllCryptos } from "@/Services/crypto";
 import { CryptoAllProps, CryptoProps } from "@/Utils/type";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const page = () => {
@@ -20,11 +21,20 @@ const page = () => {
         console.log(e);
       });
   }, []);
+  const { push } = useRouter();
 
   return (
     <div>
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <button
+          className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black flex items-center justify-evenly h-8 mb-5"
+          onClick={() => {
+            push("/myAssets");
+          }}
+        >
+          Mes avoirs
+        </button>
         <SearchCryptos setCryptosList={setCryptosList} />
         <CardContainer>
           {cryptosList &&

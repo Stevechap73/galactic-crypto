@@ -12,7 +12,7 @@ export const Cryptocard = ({
   return (
     <div>
       <div className=" m-3">
-        <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10 max-w-xs">
+        <div className="bg-white font-semibold text-center rounded-3xl border border-stone-950 p-10 max-w-xs">
           <img
             className="mb-3 w-auto h-40  shadow-lg mx-auto rounded-2xl"
             src={crypto.image}

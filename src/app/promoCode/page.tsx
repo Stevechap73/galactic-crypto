@@ -42,12 +42,12 @@ export default function page() {
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <button
-          className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black  flex items-center justify-evenly h-8"
+          className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black  flex items-center justify-evenly h-8 mb-5"
           onClick={() => {
             push("/usersAssets");
           }}
         >
-          Vers PromoCode
+          User Assets
         </button>
         <AddPromoCodeModal setIsReloadNeeded={setIsReloadNeeded} />
         {isLoading ? (
