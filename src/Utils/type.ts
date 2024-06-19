@@ -42,18 +42,23 @@ export type TradeProps = {
   id_offer: string;
 };
 
-export type PromoCodeCreateOrUpdateProps = {
-  id?: string;
+export type PromoCodeProps = {
+  name: string;
+  value: number;
+};
+
+export type PromoCodeType = {
+  id: string;
   name: string;
   value: number;
 };
 
 export type CryptoAllProps = {
-  id?: string;
+  id: string;
   name: string;
-  value: string;
+  value: number;
   image: string;
-  quantity: string;
+  quantity: number;
   created_at: string;
   updated_at?: string;
 };
@@ -81,4 +86,35 @@ export type OffersProps = {
   created_at: string;
   id_user: string;
   Crypto: CryptoProps;
+};
+
+export type UsersAssetsProps = {
+  firstName: string;
+  lastName: string;
+  pseudo: string;
+  dollarAvailables: number;
+  UserHasCrypto: CryptoProps;
+};
+
+export type UserMyAssetsProps = {
+  firstName: string;
+  lastName: string;
+  pseudo: string;
+  age: number;
+  dollarAvailables: number;
+  UserHasCrypto: [
+    {
+      Crypto: {
+        created_at: string;
+        id: string;
+        image: string;
+        name: string;
+        quantity: number;
+        updated_at: string;
+        value: number;
+      };
+      amount: number;
+      id: string;
+    }
+  ];
 };

@@ -33,7 +33,7 @@ export async function getAllCryptos() {
 }
 
 // Search Crypto
-export async function getCryptoSearch(name: string) {
+export async function getCryptoSearch(name: string | undefined) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}crypto/search/${name}`;
   let axiosConfig = {
     headers: {

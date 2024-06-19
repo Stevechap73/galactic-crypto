@@ -1,13 +1,13 @@
 "use client";
 
 import { getCryptoSearch } from "@/Services/crypto";
-import { CryptoProps } from "@/Utils/type";
+import { CryptoAllProps, CryptoProps } from "@/Utils/type";
 import { useEffect, useRef, useState } from "react";
 
 const SearchCryptos = ({
-  setcryptos,
+  setCryptosList,
 }: {
-  setcryptos: React.Dispatch<React.SetStateAction<CryptoProps[]>>;
+  setCryptosList: React.Dispatch<React.SetStateAction<CryptoAllProps[]>>;
 }) => {
   const refInput = useRef<HTMLInputElement>(null);
   const [terme, setterme] = useState<string>("");
@@ -15,7 +15,8 @@ const SearchCryptos = ({
     const handler = setTimeout(() => {
       if (terme) {
         getCryptoSearch(terme).then((data) => {
-          setcryptos(data);
+          console.log(data);
+          setCryptosList(data.data);
         });
       }
     }, 500);
@@ -23,7 +24,7 @@ const SearchCryptos = ({
     return () => {
       clearTimeout(handler);
     };
-  }, [terme, setcryptos]);
+  }, [terme]);
 
   const handleSearch = (e: any) => {
     setterme(e.target.value);
@@ -48,10 +49,13 @@ const SearchCryptos = ({
         type="button"
         id="button-addon3"
         onClick={async (e) => {
-          const value = refInput.current?.value;
-          if (value) {
-            const data = await getCryptoSearch(value);
-            setcryptos(data);
+          const name = refInput.current?.value;
+          console.log("name", name);
+          if (name) {
+            // console.log("je suis la");
+            const data = await getCryptoSearch(name);
+            // console.log({ data: data });
+            setCryptosList(data.data);
           }
         }}
       >

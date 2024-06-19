@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ErrorMsg } from "../Error";
-import { schema } from "@/Validations/validationForm";
+import { schemaRegister } from "@/Validations/validationForm";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthRegisterProps } from "@/Utils/type";
 
@@ -19,7 +19,7 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm<AuthRegisterProps>({
     mode: "onChange",
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schemaRegister),
     defaultValues: { firstName: "steve" },
   });
 

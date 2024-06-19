@@ -1,28 +1,29 @@
 "use client";
 import { CardContainer } from "@/Components/Cards/CardContainer";
-import { CardCrypto } from "@/Components/Cards/cardCrypto";
+import { CardUsersAssets } from "@/Components/Cards/cardUsersAssets";
 import { Footer } from "@/Components/Footer/footer";
 import { Header } from "@/Components/Header/header";
 import { AddCryptoModal } from "@/Components/Modals/addCryptoModal";
-import { getAllCryptos } from "@/Services/crypto";
-import { CryptoAllProps } from "@/Utils/type";
+import { getAllUsersAssets } from "@/Services/user";
+import { UsersAssetsProps } from "@/Utils/type";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { DNA } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function page() {
-  const [cryptoList, setCryptosList] = useState<CryptoAllProps[]>([]);
+  const [userAssetsList, setUserAssetsList] = useState<[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isReloadNeeded, setIsReloadNeeded] = useState(true);
 
   useEffect(() => {
-    const fetchCryptos = async () => {
+    const fetchUsersAssets = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await getAllCryptos();
-        setCryptosList(response.data);
+        const response = await getAllUsersAssets();
+        setUserAssetsList(response.data);
       } catch (err) {
         setError(
           "Une erreur s'est produite lors de la récupération des données."
@@ -32,7 +33,7 @@ export default function page() {
       }
     };
 
-    fetchCryptos();
+    fetchUsersAssets();
   }, [isReloadNeeded]);
 
   const { push } = useRouter();
@@ -44,18 +45,10 @@ export default function page() {
         <button
           className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black  flex items-center justify-evenly h-8"
           onClick={() => {
-            push("/promoCode");
+            push("/admin");
           }}
         >
-          PromoCode
-        </button>
-        <button
-          className="w-32 bg-pink-300 rounded-md border-indigo-500 text-black  flex items-center justify-evenly h-8"
-          onClick={() => {
-            push("/usersAssets");
-          }}
-        >
-          Users Assets
+          Vers Admin
         </button>
         <AddCryptoModal setIsReloadNeeded={setIsReloadNeeded} />
         {isLoading ? (
@@ -70,16 +63,22 @@ export default function page() {
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
-          <CardContainer name={"Toutes les Cryptos"}>
-            {cryptoList.map((crypto: CryptoAllProps) => (
-              <CardCrypto
-                key={crypto.id}
-                name={crypto.name}
-                value={crypto.value}
-                image={crypto.image}
-                quantity={crypto.quantity}
-                created_at={crypto.created_at}
-                id={crypto.id}
+          <CardContainer>
+            {userAssetsList.map((usersAssets: UsersAssetsProps) => (
+              <CardUsersAssets
+                firstName={usersAssets.firstName}
+                lastName={usersAssets.lastName}
+                pseudo={usersAssets.pseudo}
+                dollarAvailables={usersAssets.dollarAvailables}
+                UserHasCrypto={{
+                  created_at: "",
+                  id: "",
+                  image: "",
+                  name: "",
+                  quantity: 0,
+                  updated_at: "",
+                  value: 0,
+                }}
               />
             ))}
           </CardContainer>

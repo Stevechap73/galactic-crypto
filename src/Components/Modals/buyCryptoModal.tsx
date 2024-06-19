@@ -1,5 +1,5 @@
 import { buyCrypto } from "@/Services/crypto";
-import { CryptoProps } from "@/Utils/type";
+import { CryptoAllProps } from "@/Utils/type";
 import { Box, Modal } from "@mui/material";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -8,7 +8,7 @@ export const BuyCryptoModal = ({
   crypto,
   isBuyVisible,
 }: {
-  crypto: CryptoProps;
+  crypto: CryptoAllProps;
   isBuyVisible: boolean;
 }) => {
   const style = {

@@ -36,10 +36,10 @@ export const OfferCard = ({
 
   return (
     <div>
-      <p>Number of tokens: {offer.amount}</p>
-      <p>Seller: {offer.User.pseudo}</p>
+      <p>Nombre de jetons: {offer.amount}</p>
+      <p>Vendeur: {offer.User.pseudo}</p>
       <Cryptocard crypto={offer.Crypto} isBuyVisible={false} />
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-start">
         <button
           className="bg-white text-center rounded-lg text-indigo-600 w-20 p-1 text-sm mt-1"
           onClick={() => {

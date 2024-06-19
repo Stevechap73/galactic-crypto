@@ -25,7 +25,7 @@ export const CardAllCrypto = ({
             {cryptoProps.name}
           </h4>
           <p className="mt-3 block font-sans text-xl font-normal leading-relaxed text-gray-700 antialiased">
-            Valeur: {cryptoProps.value}
+            Valeur: {cryptoProps.value.toFixed(2)}
           </p>
           <p className="mt-3 block font-sans text-xl font-normal leading-relaxed text-gray-700 antialiased">
             Quantité: {cryptoProps.quantity}

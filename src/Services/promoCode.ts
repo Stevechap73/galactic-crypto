@@ -1,4 +1,4 @@
-import { PromoCodeCreateOrUpdateProps } from "@/Utils/type";
+import { PromoCodeProps, PromoCodeType } from "@/Utils/type";
 import axios from "axios";
 
 // All PromoCode
@@ -7,7 +7,7 @@ export async function getAllPromoCode() {
 
   let axiosConfig = {
     headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -28,14 +28,12 @@ export async function getAllPromoCode() {
 }
 
 // Create PromoCode
-export async function addPromoCode(
-  promoCodeCreate: PromoCodeCreateOrUpdateProps
-) {
+export async function addPromoCode(promoCodeCreate: PromoCodeProps) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}promoCode/create`;
 
   let axiosConfig = {
     headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -59,14 +57,12 @@ export async function addPromoCode(
 }
 
 // Update PromoCode par son id
-export async function updateCrypto(
-  promoCodeUpdate: PromoCodeCreateOrUpdateProps
-) {
+export async function updateCrypto(promoCodeUpdate: PromoCodeType) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}crypto/update/${promoCodeUpdate.id}`;
 
   let axiosConfig = {
     headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       Authorization: `Bearer ${localStorage.getItem("token")}`,

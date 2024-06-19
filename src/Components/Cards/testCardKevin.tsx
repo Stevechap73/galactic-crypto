@@ -1,4 +1,4 @@
-import { CryptoProps } from "@/Utils/type";
+import { CryptoAllProps } from "@/Utils/type";
 import React from "react";
 import { BuyCryptoModal } from "../Modals/buyCryptoModal";
 
@@ -6,7 +6,7 @@ export const Cryptocard = ({
   crypto,
   isBuyVisible,
 }: {
-  crypto: CryptoProps;
+  crypto: CryptoAllProps;
   isBuyVisible: boolean;
 }) => {
   return (
@@ -19,7 +19,9 @@ export const Cryptocard = ({
             alt={crypto.name}
           />
           <h1 className="text-lg text-gray-700">{crypto.name}</h1>
-          <h3 className="text-sm text-gray-400 ">Valeur : {crypto.value} $</h3>
+          <h3 className="text-sm text-gray-400 ">
+            Valeur : {crypto.value.toFixed(2)} $
+          </h3>
           <p className="text-xs text-gray-400 mt-4">
             Quantité restante sur le serveur : {crypto.quantity}
           </p>

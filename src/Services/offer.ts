@@ -7,7 +7,7 @@ export async function getAllOffers() {
 
   let axiosConfig = {
     headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -33,7 +33,7 @@ export async function addCrypto(offerCreate: CryptoBuyOrOfferOrUpdateProps) {
 
   let axiosConfig = {
     headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -62,7 +62,7 @@ export async function updateCrypto(offerUpdate: CryptoBuyOrOfferOrUpdateProps) {
 
   let axiosConfig = {
     headers: {
-      "content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       Authorization: `Bearer ${localStorage.getItem("token")}`,

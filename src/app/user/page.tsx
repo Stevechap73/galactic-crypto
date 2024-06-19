@@ -6,7 +6,7 @@ import { Header } from "@/Components/Header/header";
 import { getAllCryptos } from "@/Services/crypto";
 import { CryptoAllProps } from "@/Utils/type";
 import React, { useEffect, useState } from "react";
-
+import { DNA } from "react-loader-spinner";
 export default function page() {
   const [cryptoList, setCryptosList] = useState<CryptoAllProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +36,14 @@ export default function page() {
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         {isLoading ? (
-          <p>Chargement...</p>
+          <DNA
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
@@ -49,6 +56,7 @@ export default function page() {
                 image={crypto.image}
                 quantity={crypto.quantity}
                 created_at={crypto.created_at}
+                id={""}
               />
             ))}
           </CardContainer>

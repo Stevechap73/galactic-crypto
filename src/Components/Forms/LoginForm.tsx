@@ -22,8 +22,13 @@ export const LoginForm = () => {
       if (res.status === 200) {
         if (typeof window !== "undefined") {
           window.localStorage.setItem("token", res.data.access_token);
-
-          push("/");
+          const role = res.data.user.Role.name;
+          console.log(role);
+          if (role !== "admin") {
+            push("/user");
+          } else {
+            push("/admin");
+          }
         }
       }
     });

@@ -13,8 +13,12 @@ export const Header = () => {
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="#" className="flex items-center">
               <img
+                // src="https://images.unsplash.com/photo-1639843885527-43b098a9661a?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 src="https://flowbite.com/docs/images/logo.svg"
                 className="mr-3 h-6 sm:h-9"
+                onClick={() => {
+                  push("/");
+                }}
                 alt="Flowbite Logo"
               />
               <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
@@ -55,9 +59,9 @@ export const Header = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <svg
@@ -67,9 +71,9 @@ export const Header = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </button>
