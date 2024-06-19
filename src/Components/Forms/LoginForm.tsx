@@ -25,7 +25,7 @@ export const LoginForm = () => {
           const role = res.data.user.Role.name;
           console.log(role);
           if (role !== "admin") {
-            push("/user");
+            push("/crypto");
           } else {
             push("/admin");
           }

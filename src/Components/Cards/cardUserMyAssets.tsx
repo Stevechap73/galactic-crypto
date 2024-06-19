@@ -14,7 +14,7 @@ export const CardUserMyAssets = ({
     <div>
       <div className=" m-3">
         <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10 max-w-xs">
-          <h1 className="text-lg text-gray-700">MES ACTIFS</h1>
+          <h1 className="text-lg text-gray-700">UTILISATEUR</h1>
           <h2 className="text-lg text-gray-700">
             Nom : {userMyassets.firstName}{" "}
           </h2>
