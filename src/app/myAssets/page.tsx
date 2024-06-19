@@ -67,6 +67,7 @@ export default function page() {
         ) : (
           <CardContainer>
             <div>
+              <p> ma carte crypto</p>
               <CardUserMyAssets userMyassets={userMyAssetsList} />
             </div>
             <div className="w-full h-[200px ]   border-2 border-black">

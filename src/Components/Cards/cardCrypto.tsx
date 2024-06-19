@@ -10,7 +10,6 @@ export const CardCrypto = ({
 }: CryptoAllProps) => {
   return (
     <div>
-      <p> ma carte crypto</p>
       <div className=" m-3">
         <div className="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10 max-w-xs">
           <img

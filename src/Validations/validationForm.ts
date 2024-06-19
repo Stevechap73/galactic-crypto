@@ -96,7 +96,6 @@ export const schemaRegister = yup.object({
     .required("ce champs est obligatoire"),
   promoCode: yup
     .string()
-    .required("Ce champs est obligatoire")
     .min(3, "mini : 3 caractères")
     .max(20, "max : 20 caractères"),
 });

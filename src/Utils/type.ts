@@ -7,7 +7,7 @@ export type AuthRegisterProps = {
   email: string;
   password: string;
   confirmPassword: string;
-  prompCode?: string;
+  promoCode?: string;
 };
 
 export type AuthLoginProps = {

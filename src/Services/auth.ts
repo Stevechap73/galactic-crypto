@@ -24,7 +24,7 @@ export async function addRegister(authProps: AuthRegisterProps) {
         email: authProps.email,
         password: authProps.password,
         confirmPassword: authProps.confirmPassword,
-        prompCode: authProps.prompCode,
+        prompCode: authProps.promoCode,
       },
       axiosConfig
     )
